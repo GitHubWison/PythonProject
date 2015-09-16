@@ -4,10 +4,10 @@ class StaticVar:
     # 压力测试的总次数
     TEST_COUNT = 10
     # 压力测试的地址
-    SERVER_NAME = "http://42.62.18.90/rest/v1.0/"
+    SERVER_NAME = "http://120.55.126.201/rest/v1.0/"
     # VSOME = '?type=android&vname=1.8.25(106)-debug&vcode=108025'
-    VNAME = '1.8.25(106)-debug'
-    VCODE = '108025'
+    VNAME = '2.0.7(127)-debug'
+    VCODE = '200007'
     TYPE = 'android'
 
     # 拼写url
@@ -29,8 +29,9 @@ class StaticVar:
             except IndexError as ierror:
                 break
         time_span = time.time()-start_time
-        print("totaltime== %s") % str(time_span)
-        print("ok!")
+        # print("totaltime== %s") % str(time_span)
+        # print("ok!")
+        return str(time_span)
 
     # 生成单个的进程
     def generate_thread(self, surl, is_get=True, test_data=''):
@@ -51,3 +52,32 @@ class StaticVar:
             t.start()
             i += 1
         return (threads)
+
+    #生成连续的进程批量，模拟用户连续的操作
+    #surls：字典类型的数组，存放单个字典示例{'url':'www.baidu.com','is_get':True,test_data=''}
+    def generate_series_threads(self, surls=[]):
+        threads = []
+        for each_url_dic in surls:
+            urlmsg = SuperDict.SuperDict().put_msg(each_url_dic)
+            # 测试的url地址
+            url = urlmsg.get_msg('url')
+            # 是否是get请求
+            is_get = urlmsg.get_msg('is_get')
+            # 如果是post请求，则需要把测试的参数传进来
+            if is_get == False:
+                test_data = urlmsg.get_msg('test_data')
+            else:
+                test_data = ''
+            t = RequestThread.RequestThread(url, is_get, test_data)
+            threads.append(t)
+            t.start()
+        return threads
+
+    # 打印后台日志
+    def print_results(self,results_dic = {}):
+        results = ''
+        for each_key in results_dic:
+            results = results + each_key + ":" + results_dic[each_key] + "\n"
+        print(results)
+
+
