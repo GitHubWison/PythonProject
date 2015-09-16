@@ -110,6 +110,8 @@ def geturlsdic(urls = []):
 surls = geturlsdic([all_smart, all_date, all_smart_onlymy, all_date_onlymy,aid, aid_myonly, aid_unsolvedonly, aid_myonly_unsolvedonly,share,share_myonly,talk])
 
 # STATICVAR.operat_threads(STATICVAR.generate_mutible_threads(all_date, True, '', 100))
-for i in range(0, 14):
-    print(STATICVAR.operat_threads(STATICVAR.generate_series_threads(surls)))
-
+results = {}
+for i in range(1, 10):
+    results[str(i)] = STATICVAR.operat_threads(STATICVAR.generate_series_threads(surls))
+# 将结果写入txt文件中
+STATICVAR.print_results(results)

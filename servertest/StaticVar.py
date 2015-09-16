@@ -9,6 +9,8 @@ class StaticVar:
     VNAME = '2.0.7(127)-debug'
     VCODE = '200007'
     TYPE = 'android'
+    # 日期格式
+    ISOTIMEFORMAT = '%Y-%m-%d %X'
 
     # 拼写url
     def spell_url_v2(self, urlmsg_original):
@@ -31,7 +33,7 @@ class StaticVar:
         time_span = time.time()-start_time
         # print("totaltime== %s") % str(time_span)
         # print("ok!")
-        return str(time_span)
+        return time_span
 
     # 生成单个的进程
     def generate_thread(self, surl, is_get=True, test_data=''):
@@ -73,11 +75,45 @@ class StaticVar:
             t.start()
         return threads
 
-    # 打印后台日志
-    def print_results(self,results_dic = {}):
+    # 获得后台日志
+    def print_results(self, results_dic={}):
+        current_time = time.strftime(self.ISOTIMEFORMAT, time.localtime(time.time()))
+        logs = open(current_time + '.txt', 'w')
         results = ''
+        i = 1
         for each_key in results_dic:
-            results = results + each_key + ":" + results_dic[each_key] + "\n"
-        print(results)
+            results = results + "第"+ str(i) + "轮" + ":" + str(results_dic[each_key]) + "\n"
+            i = i + 1
+        # results = results + "平均值：" + str(self.get_avg(results_dic)) + "\n" +
+        # "峰值：" +
+        results = results + "最快用时：" + str(self.get_statistics(results_dic)["TheFast"]) + "\n" +"最慢用时：" + \
+                  str(self.get_statistics(results_dic)["TheLowest"]) + "\n" +"平均用时：" + \
+                  str(self.get_statistics(results_dic)["TheAvg"]) + "\n"
+
+        logs.write(results)
+        # return results
+
+    #平均值，峰值，谷值
+    def get_statistics(self,data):
+        sum = 0
+        # 最快值
+        the_fast = 0
+        # 最慢值
+        the_lowest = 0
+        for each_data in data:
+            if the_fast == 0:
+                the_fast = data[each_data]
+            else:
+                the_fast = data[each_data] if data[each_data] < the_fast else the_fast
+            if the_lowest == 0:
+                the_lowest = data[each_data]
+            else:
+                the_lowest = data[each_data] if data[each_data] > the_lowest else the_lowest
+            sum = sum + data[each_data]
+        #平均值
+        avg = sum/len(data)
+        return ({"TheFast":the_fast, "TheLowest":the_lowest, "TheAvg":avg})
+
+
 
 
