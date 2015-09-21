@@ -33,7 +33,15 @@ import SuperDict,RequestThread,StaticVar,time
 # ISOTIMEFORMAT = '%Y-%m-%d %X'
 # print(time.strftime(ISOTIMEFORMAT, time.localtime(time.time())))
 
-StaticVar.StaticVar().get_avg({"one":1,"two":2,"three":3})
+# StaticVar.StaticVar().get_avg({"one":1,"two":2,"three":3})
+stat_time = time.time()
+while (time.time() - stat_time) < 2:
+    continue
+print("SUCCESS")
+
+
+
+
 
 
 
