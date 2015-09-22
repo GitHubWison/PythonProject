@@ -7,7 +7,7 @@ STATICVAR = StaticVar.StaticVar()
 all_smart = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/all/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=smart&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list0smartfalsetrue&vcode='+STATICVAR.VCODE
 })
@@ -15,7 +15,7 @@ all_smart = STATICVAR.spell_url_v2({
 all_date = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/all/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list0datefalsetrue&vcode='+STATICVAR.VCODE
 })
@@ -24,7 +24,7 @@ all_date = STATICVAR.spell_url_v2({
 all_smart_onlymy = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/all/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=smart&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list0smartfalsefalse&vcode='+STATICVAR.VCODE
 })
@@ -33,7 +33,7 @@ all_smart_onlymy = STATICVAR.spell_url_v2({
 all_date_onlymy = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/all/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list0datefalsefalse&vcode='+STATICVAR.VCODE
 })
@@ -41,7 +41,7 @@ all_date_onlymy = STATICVAR.spell_url_v2({
 aid = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/question/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list1datefalsetrue&vcode='+STATICVAR.VCODE
 })
@@ -49,7 +49,7 @@ aid = STATICVAR.spell_url_v2({
 aid_myonly = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/question/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list1datefalsefalse&vcode='+STATICVAR.VCODE
 })
@@ -57,7 +57,7 @@ aid_myonly = STATICVAR.spell_url_v2({
 aid_unsolvedonly = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/question/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&range=around&status=unsolved&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list1datefalsetrue&vcode='+STATICVAR.VCODE
 })
@@ -65,7 +65,7 @@ aid_unsolvedonly = STATICVAR.spell_url_v2({
 aid_myonly_unsolvedonly = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/question/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&status=unsolved&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list1datefalsefalse&vcode='+STATICVAR.VCODE
 })
@@ -74,7 +74,7 @@ aid_myonly_unsolvedonly = STATICVAR.spell_url_v2({
 share = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/share/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list2datefalsetrue&vcode='+STATICVAR.VCODE
 })
@@ -82,7 +82,7 @@ share = STATICVAR.spell_url_v2({
 share_myonly = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/share/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list2datefalsefalse&vcode='+STATICVAR.VCODE
 })
@@ -91,7 +91,7 @@ share_myonly = STATICVAR.spell_url_v2({
 talk = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/talk/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list3datefalsetrue&vcode='+STATICVAR.VCODE
 })
@@ -99,11 +99,20 @@ talk = STATICVAR.spell_url_v2({
 talk_myonly = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/talk/list/',
     'TS': '0/',
-    'TOKEN': '55f8204519f875ea5cc41c9e/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
     'VAR': '?sort=date&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list3datefalsefalse&vcode='+STATICVAR.VCODE
 })
 
+
+#全部－按智能排序(字典版)
+all_smart_dic = {
+    'HEAD': 'mutualAid/all/list/',
+    'TS': '0/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
+    'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
+    'VAR': '?sort=smart&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list0smartfalsetrue&vcode='+STATICVAR.VCODE
+}
 def geturlsdic(urls = []):
     all_surl = []
     for each_url in urls:
@@ -114,8 +123,15 @@ def geturlsdic(urls = []):
 
 
 
-surls = geturlsdic([all_smart, all_date, all_smart_onlymy, all_date_onlymy,aid, aid_myonly, aid_unsolvedonly, aid_myonly_unsolvedonly,share,share_myonly,talk,talk_myonly])
+# surls = geturlsdic([all_smart, all_date, all_smart_onlymy, all_date_onlymy,aid, aid_myonly, aid_unsolvedonly, aid_myonly_unsolvedonly,share,share_myonly,talk,talk_myonly])
+# print(surls)
 
+surls = geturlsdic(STATICVAR.get_paging_list_urls(all_smart_dic))
+print(surls)
+# 智能排序
+# surls = geturlsdic([all_smart])
+# 按发布时间排序
+# surls = geturlsdic([all_date])
 # STATICVAR.operat_threads(STATICVAR.generate_mutible_threads(all_date, True, '', 100))
 results = {}
 for i in range(1, 2):

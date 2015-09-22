@@ -1,5 +1,6 @@
 # coding=utf-8
 import SuperDict,RequestThread,StaticVar,time
+STATICVAR = StaticVar.StaticVar()
 # stu = SuperDict.SuperDict()
 # studic = {'StudentName': 'stu_name', 'StudentBirth': 'stu_birthday', 'Student3Score': 'stu_3score'}
 # stu.put_msg(studic)
@@ -34,10 +35,26 @@ import SuperDict,RequestThread,StaticVar,time
 # print(time.strftime(ISOTIMEFORMAT, time.localtime(time.time())))
 
 # StaticVar.StaticVar().get_avg({"one":1,"two":2,"three":3})
-stat_time = time.time()
-while (time.time() - stat_time) < 2:
-    continue
-print("SUCCESS")
+# stat_time = time.time()
+# while (time.time() - stat_time) < 2:
+#     continue
+# print("SUCCESS")
+
+
+#全部－按智能排序
+all_smart = {
+    'HEAD': 'mutualAid/all/list/',
+    'TS': "0/",
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
+    'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
+    'VAR': '?sort=smart&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list0smartfalsetrue&vcode='+STATICVAR.VCODE
+}
+STATICVAR.get_paging_list_urls(all_smart)
+
+# a = 1442472679343
+# print(str(a) + "/")
+
+
 
 
 

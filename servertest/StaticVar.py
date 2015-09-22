@@ -1,5 +1,5 @@
 # coding=utf-8
-import time, RequestThread, SuperDict
+import time, RequestThread, SuperDict, requests
 class StaticVar:
     # 压力测试的总次数
     TEST_COUNT = 10
@@ -113,6 +113,26 @@ class StaticVar:
         #平均值
         avg = sum/len(data)
         return ({"TheFast":the_fast, "TheLowest":the_lowest, "TheAvg":avg})
+
+    #分页时生成批量的数据
+    def get_paging_list_urls(self, url):
+        nowurldic = url
+        # nextTs
+        nextTs = ''
+        # 存储分页的url
+        lists = [self.spell_url_v2(url)]
+
+        for i in range(0, 5):
+            xiaoqu = requests.get(self.spell_url_v2(url))
+            xiaoqu_content = xiaoqu.json()
+            nextTs = str(xiaoqu_content["data"]["nextTs"]) + "/"
+            # 拼接url
+            nowurldic["TS"] = nextTs
+            lists.append(self.spell_url_v2(nowurldic))
+        return(lists)
+
+
+
 
 
 
