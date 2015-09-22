@@ -111,7 +111,18 @@ all_smart_dic = {
     'TS': '0/',
     'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
     'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
-    'VAR': '?sort=smart&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list0smartfalsetrue&vcode='+STATICVAR.VCODE
+    'VAR': '?sort=smart&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&cacheGroupKey=question_list0smartfalsetrue&vcode='+STATICVAR.VCODE,
+    'DIRECTION': '&direction='+STATICVAR.DIRECTION_TOP
+}
+
+#全部－按发布时间排序(字典版)
+all_date_dic = {
+    'HEAD': 'mutualAid/all/list/',
+    'TS': '0/',
+    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
+    'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
+    'VAR': '?sort=date&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&cacheGroupKey=question_list0datefalsetrue&vcode='+STATICVAR.VCODE,
+    'DIRECTION': '&direction='+STATICVAR.DIRECTION_TOP
 }
 def geturlsdic(urls = []):
     all_surl = []

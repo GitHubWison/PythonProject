@@ -11,11 +11,13 @@ class StaticVar:
     TYPE = 'android'
     # 日期格式
     ISOTIMEFORMAT = '%Y-%m-%d %X'
+    DIRECTION_TOP = "top"
+    DIRECTION_DOWN = "down"
 
     # 拼写url
     def spell_url_v2(self, urlmsg_original):
         urlmsg = SuperDict.SuperDict().put_msg(urlmsg_original)
-        spell_string = self.SERVER_NAME + urlmsg.get_msg('HEAD') + urlmsg.get_msg('TS') + urlmsg.get_msg('TOKEN') + urlmsg.get_msg('DIVICEID') + urlmsg.get_msg('VAR')
+        spell_string = self.SERVER_NAME + urlmsg.get_msg('HEAD') + urlmsg.get_msg('TS') + urlmsg.get_msg('TOKEN') + urlmsg.get_msg('DIVICEID') + urlmsg.get_msg('VAR') + urlmsg.get_msg('DIRECTION')
         return spell_string
 
     def operat_threads(self, threads):
@@ -121,7 +123,8 @@ class StaticVar:
         nextTs = ''
         # 存储分页的url
         lists = [self.spell_url_v2(url)]
-
+        url["DIRECTION"] = '&direction='+self.DIRECTION_DOWN
+        print(lists)
         for i in range(0, 5):
             xiaoqu = requests.get(self.spell_url_v2(url))
             xiaoqu_content = xiaoqu.json()
