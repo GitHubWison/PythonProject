@@ -1,5 +1,5 @@
 # coding=utf-8
-import threading, requests
+import threading, requests, json
 import urllib
 import urllib2
 # 定义线程
@@ -27,8 +27,10 @@ class RequestThread(threading.Thread):
                 else:
                     return ('SUCCESS')
             else:
-                test_data_urlencode = urllib.urlencode(self.test_request_data)
-                req = urllib2.Request(url=self.urla, data=test_data_urlencode)
+                headers = {"Content-type": "application/json"}
+                json_string = json.dumps(self.test_request_data)
+                print(str(json_string))
+                req = urllib2.Request(self.urla, json_string, headers)
                 res_data = urllib2.urlopen(req)
                 res = res_data.read()
                 return(res)

@@ -1,13 +1,14 @@
 # coding=utf-8
-import time, RequestThread, SuperDict, requests
+import time, RequestThread, SuperDict, requests, xlrd
 class StaticVar:
     # 压力测试的总次数
     TEST_COUNT = 10
     # 压力测试的地址
     SERVER_NAME = "http://120.55.126.201/rest/v1.0/"
+    # SERVER_NAME = "http://120.55.118.181/rest/v1.0/"
     # VSOME = '?type=android&vname=1.8.25(106)-debug&vcode=108025'
-    VNAME = '2.0.7(127)-debug'
-    VCODE = '200007'
+    VNAME = '2.0.2(59)'
+    VCODE = '200002'
     TYPE = 'android'
     # 日期格式
     ISOTIMEFORMAT = '%Y-%m-%d %X'
@@ -19,7 +20,7 @@ class StaticVar:
         urlmsg = SuperDict.SuperDict().put_msg(urlmsg_original)
         spell_string = self.SERVER_NAME + urlmsg.get_msg('HEAD') + urlmsg.get_msg('TS') + urlmsg.get_msg('TOKEN') + urlmsg.get_msg('DIVICEID') + urlmsg.get_msg('VAR') + urlmsg.get_msg('DIRECTION')
         return spell_string
-
+    # 处理多个进程
     def operat_threads(self, threads):
         # 开始的时间
         start_time = time.time()
@@ -36,6 +37,8 @@ class StaticVar:
         # print("totaltime== %s") % str(time_span)
         # print("ok!")
         return time_span
+    # 处理单个进程
+    def operate_signal_thread(self, thread):
 
     # 生成单个的进程
     def generate_thread(self, surl, is_get=True, test_data=''):
@@ -134,7 +137,18 @@ class StaticVar:
             lists.append(self.spell_url_v2(nowurldic))
         return(lists)
 
-
+    #判断表格中是否存在某个sheet
+    def is_sheet_exist(self, sheet_name_string, all_sheet_names):
+        return_bool = False
+        i = 0
+        for sheet_name in all_sheet_names:
+            if(sheet_name == sheet_name_string):
+                return_bool = True
+                break
+            else:
+                i += 1
+                continue
+        return {'IsExist': return_bool, 'ExistInIndex': i}
 
 
 

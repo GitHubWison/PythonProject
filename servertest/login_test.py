@@ -1,5 +1,5 @@
 # coding=utf-8
-import StaticVar
+import StaticVar,json
 # qq登录测试
 STATICVAR= StaticVar.StaticVar()
 # surlv2 = STATICVAR.spell_url_v2({
@@ -16,6 +16,8 @@ surl = STATICVAR.spell_url_v2({
     'DIVICEID': 'BDDFA469774D8A467FD517CEAD8F62BE',
     'VAR': '?type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&vcode='+STATICVAR.VCODE
 })
-
-STATICVAR.generate_thread(surl, False, {"userPassword": "000000", "mobilePhone": "15995448871"})
+login_data = {"userPassword": "qqqqqq", "mobilePhone": "15995448875"}
+# login_json = json.dumps(login_data)
+# print(login_json)
+STATICVAR.generate_thread(surl, False, login_data)
 

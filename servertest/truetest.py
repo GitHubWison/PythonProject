@@ -1,64 +1,136 @@
 # coding=utf-8
-import SuperDict,RequestThread,StaticVar,time
+
+import xlrd, sys, xlwt, NewQuestion, urllib2, re, StaticVar, urllib
+from xlutils.copy import copy
 STATICVAR = StaticVar.StaticVar()
-# stu = SuperDict.SuperDict()
-# studic = {'StudentName': 'stu_name', 'StudentBirth': 'stu_birthday', 'Student3Score': 'stu_3score'}
-# stu.put_msg(studic)
-# allstumsg = SuperDict.SuperDict()
+reload(sys)
+sys.setdefaultencoding("utf-8")
+# from qiniu import Auth
+# from qiniu import put_file
 #
-# print(stu.get_msg('StudentName'))
-# stu_string = 'abcdef';
-# studic = {'sturand': stu_string, 'stumsg':'yes'}
-# studic2 = {'sturand': stu_string, 'stumsg':'no'}
-# stuarray = [studic,studic2]
-# print(stuarray)
-# for each_item in stu:
-#     print(each_item)
-# threads = ['1', 'bird']
-# thr = RequestThread.RequestThread()
-# # print(type(threads))
-# if isinstance(threads, list):
-#     print('OK')
-# else:
-#     print('bad')
+# import qiniu.config
 #
-# for i in range(0,10):
-#     print('****'+str(i))
+# access_key = 'F-xDLc0uFKh7F1oNwmS_9oL3_2QALN3nKMiJyRGV'
+# secret_key = 'axK2jtKGjnvoP74qPLNUjmoTC9wO0-wbKbyqvbLR'
+# bucket_name = 'python-test-space'
+#
+# q = Auth(access_key, secret_key)
+#
+# mime_type = "application/octet-stream"
+# params = {'x:a': 'a'}
+# localfile = '/Users/xuxuqiwei/Documents/python/img/tu.png'
+#
+# key = 'big'
+# token = q.upload_token(bucket_name, key)
+#
+# progress_handler = lambda progress, total: progress
+# ret, info = put_file(token, key, localfile, params, mime_type, progress_handler=progress_handler)
+# print(info)
+# assert ret['key'] == key
 
-# StaticVar.StaticVar().print_results({"hello":"myhello","222":"22222222222","yo":"yoooooooo"})
-# 创建txt文件
-# f = open('f.txt','w')
-# f.write("*****")
-# f.close()
-
-# ISOTIMEFORMAT = '%Y-%m-%d %X'
-# print(time.strftime(ISOTIMEFORMAT, time.localtime(time.time())))
-
-# StaticVar.StaticVar().get_avg({"one":1,"two":2,"three":3})
-# stat_time = time.time()
-# while (time.time() - stat_time) < 2:
-#     continue
-# print("SUCCESS")
-
-
-#全部－按智能排序
-all_smart = {
-    'HEAD': 'mutualAid/all/list/',
-    'TS': "0/",
-    'TOKEN': '54fb62c0c9ee88e6318c7ca8/',
-    'DIVICEID': 'AF64D0152793E543211D36E9D1651814',
-    'VAR': '?sort=smart&range=around&type='+STATICVAR.TYPE+'&vname='+STATICVAR.VNAME+'&direction=top&cacheGroupKey=question_list0smartfalsetrue&vcode='+STATICVAR.VCODE
-}
-STATICVAR.get_paging_list_urls(all_smart)
-
-# a = 1442472679343
-# print(str(a) + "/")
-
-
-
+# from apscheduler.schedulers.blocking import BlockingScheduler
+# from datetime import datetime
+# import  time,os
+# def tick():
+#     print('Tick!The time is:%s' % datetime.now())
+#     # print('dd')
+#
+# scheduler = BlockingScheduler()
+# scheduler.add_job(tick, 'cron', second='0', minute='38', hour='12', day='*', month='*', year='*')
+# print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
+# try:
+#     scheduler.start()
+# except (KeyboardInterrupt, SystemExit):
+#     scheduler.shutdown()
 
 
 
+# table = data.sheets()[0]
+# cols = table.col_values(0)
+#
+# print(cols[len(cols) - 1])
+# print(len(cols))
+
+# 写入空值
+# f = xlwt.Workbook()
+# sheet1 = f.add_sheet(u'sheet1',cell_overwrite_ok=True)
+# sheet1.write(len(cols) - 1, 0, '123')
+# f.save('autotest-post.xls')
+
+# 获取表格的总行数
+# data = xlrd.open_workbook('autotest-post.xls')
+# table1 = data.sheets()[1].col_values(0)
+# print(len(table1))
+# wb = copy(data)
+# ws = wb.get_sheet(1)
+# ws.write(len(table1) - 1, 0, '')
+# wb.save('autotest-post.xls')
+#
+#
+# data = xlrd.open_workbook('autotest-post.xls')
+# table1 = data.sheets()[1].col_values(0)
+# print(len(table1))
+
+# question = NewQuestion.NewQuestion(1)
+# question.send_post_from_excel()
+
+# 获得笑话集锦
+request = urllib2.Request('http://www.jokeji.cn/jokehtml/ym/2015112502030477.htm')
+response = urllib2.urlopen(request)
+response_string = response.read().decode('gbk')
+pattern = re.compile('<P>(.*?)</P>', re.S)
+items = re.findall(pattern,response_string)
+data = xlrd.open_workbook('autotest-post.xls')
+wb = copy(data)
+# laugh_words_sheet = ''
+# 首先列出所有的表格名称
+all_sheet_names = data.sheet_names()
+#然后比较是否存在需要的sheet
+need_sheet_name = 'laugh_words5'
+judge_sheet_exist = STATICVAR.is_sheet_exist(need_sheet_name,all_sheet_names)
+if judge_sheet_exist['IsExist']:
+    #存在此sheet,需要获取sheet
+    laugh_worlds_sheet = wb.get_sheet(judge_sheet_exist['ExistInIndex'])
+else:
+    #不存在此sheet需要新建一个
+    wb.add_sheet(need_sheet_name, cell_overwrite_ok=True)
+    laugh_worlds_sheet = wb.get_sheet(len(all_sheet_names))
+i = 0
+for item in items:
+    laugh_worlds_sheet.write(i, 0, item)
+    i += 1
+wb.save('autotest-post.xls')
 
 
 
+
+
+
+# 新建一个表格
+# try:
+#     laugh_words_sheet = data.sheet_by_name('laugh_words5')
+# #     如果有这样的sheet则获取
+# except Exception, e:
+#     wb.add_sheet('laugh_words5', cell_overwrite_ok=True)
+#     laugh_words_sheet = wb.get_sheet(4)
+#     print('notpass')
+#     i = 0
+# for item in items:
+#     # 写入到sheet中
+#     laugh_words_sheet.write(i, 0, item)
+#     i = i + 1
+#     print(i)
+#     # print(item)
+# wb.save('autotest-post.xls')
+
+# 在已有的excel中新建sheet
+# data = xlrd.open_workbook('autotest-post.xls')
+# wb = copy(data)
+# try:
+#     data.sheet_by_name('sheet3')
+# except Exception, e:
+#     print(e)
+#     wb.add_sheet('sheet3', cell_overwrite_ok=True)
+# sheet2 = wb.get_sheet(3)
+# sheet2.write(0, 0, 'some text')
+# wb.save('autotest-post.xls')

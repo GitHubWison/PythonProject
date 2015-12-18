@@ -2,7 +2,6 @@
 #首页列表的相关测试
 import StaticVar,time
 STATICVAR = StaticVar.StaticVar()
-
 #全部－按智能排序
 all_smart = STATICVAR.spell_url_v2({
     'HEAD': 'mutualAid/all/list/',
@@ -137,18 +136,20 @@ def geturlsdic(urls = []):
 # surls = geturlsdic([all_smart, all_date, all_smart_onlymy, all_date_onlymy,aid, aid_myonly, aid_unsolvedonly, aid_myonly_unsolvedonly,share,share_myonly,talk,talk_myonly])
 # print(surls)
 
-surls = geturlsdic(STATICVAR.get_paging_list_urls(all_smart_dic))
-print(surls)
+surls = geturlsdic(STATICVAR.get_paging_list_urls(all_date_dic))
+surls2 = 'http://t.app.66xiaoqu.com/rest/v1.0/market/goods/saleList/0/54fb62c0c9ee88e6318c7ca8/12'
+print(surls2)
 # 智能排序
 # surls = geturlsdic([all_smart])
 # 按发布时间排序
 # surls = geturlsdic([all_date])
 # STATICVAR.operat_threads(STATICVAR.generate_mutible_threads(all_date, True, '', 100))
 results = {}
-for i in range(1, 2):
-    results[str(i)] = STATICVAR.operat_threads(STATICVAR.generate_series_threads(surls))
+for i in range(1, 100):
+    results[str(i)] = STATICVAR.operat_threads(STATICVAR.generate_thread(surls2))
     stat_time = time.time()
     while (time.time() - stat_time) < 0.5:
         continue
 # 将结果写入txt文件中
 STATICVAR.print_results(results)
+# print(results)
