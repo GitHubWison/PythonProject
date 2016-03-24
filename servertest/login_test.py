@@ -8,7 +8,7 @@ STATICVAR= StaticVar.StaticVar()
 #     'DIVICEID': "BDDFA469774D8A467FD517CEAD8F62BE"
 # })
 # STATICVAR.operat_threads(STATICVAR.generate_mutible_threads(surlv2, False, {"id": "4CAFC66F62734C0DFE5F8721FFB361F8"}))
-
+#http://t.app.66xiaoqu.com/rest/v1.0/users/appLogin/BDDFA469774D8A467FD517CEAD8F62BE?type=android&vname=2.0.2(59)&vcode=200002
 # 手机登录测试
 # 1.登录
 surl = STATICVAR.spell_url_v2({
